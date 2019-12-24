@@ -1,0 +1,11 @@
+
+{#表单及验证宏#}
+{% macro form_field(field) %}
+    {{ field.label }}<br>
+    {{ field(**kwargs) }}<br>
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}Title{% endblock %}-C101</title>
+        {% block head_script %}{% endblock %}
+
+        {# 导入本地boostrap和jquery #}
+        <link rel="icon"  href="{{ url_for('static',filename='imgs/ico/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-theme.css') }}">
+        <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+    {# 导航部分 #}
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+
+    </nav>
+    <main>
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+
+
+        {% block content %}
+        {% endblock %}
+    </main>
+    {# 脚部分 #}
+    <footer>
+    </footer>
+</body>
+</html>
